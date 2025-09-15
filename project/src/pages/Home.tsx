@@ -10,29 +10,9 @@ const Home: React.FC = () => {
           ¡Bienvenidos al Sistema de Pedidos!
         </h2>
         <p className="text-2xl text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto">
-          Aquí puedes hacer pedidos de almuerzo para estudiantes y profesores 
-          de manera fácil y accesible. Nuestro sistema está diseñado para ser 
-          simple y visual.
+          Aquí puedes hacer pedidos de almuerzos para todos los miembros de la comunidad,
+          de manera fácil y accesible. 
         </p>
-      </div>
-
-      {/* Features Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-[#41BAAE]">
-          <Users size={64} className="mx-auto mb-4 text-[#41BAAE]" />
-          <h3 className="text-2xl font-bold mb-3 text-gray-800">Fácil de Usar</h3>
-          <p className="text-lg text-gray-600">Interface visual con botones grandes y claros</p>
-        </div>
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-[#BADA55]">
-          <Utensils size={64} className="mx-auto mb-4 text-[#BADA55]" />
-          <h3 className="text-2xl font-bold mb-3 text-gray-800">Menú Completo</h3>
-          <p className="text-lg text-gray-600">Frutas, sopas, bebidas y platos principales</p>
-        </div>
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center border-t-4 border-[#41BAAE]">
-          <History size={64} className="mx-auto mb-4 text-[#41BAAE]" />
-          <h3 className="text-2xl font-bold mb-3 text-gray-800">Historial Completo</h3>
-          <p className="text-lg text-gray-600">Reportes y seguimiento de todos los pedidos</p>
-        </div>
       </div>
 
       {/* Main Action Buttons */}
