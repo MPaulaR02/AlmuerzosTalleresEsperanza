@@ -119,34 +119,34 @@ const MakeOrder: React.FC = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Hacer Pedido de Almuerzo</h1>
-        <p className="text-xl text-gray-600">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">Hacer Pedido de Almuerzo</h1>
+        <p className="text-base sm:text-lg lg:text-xl text-gray-600">
           Selecciona cada persona para configurar su pedido
         </p>
       </div>
 
       {/* Progress Indicator */}
-      <div className="mb-8 bg-white rounded-lg p-4 shadow-lg">
+      <div className="mb-6 sm:mb-8 bg-white rounded-lg p-3 sm:p-4 shadow-lg">
         <div className="flex items-center justify-between">
-          <span className="text-lg font-semibold text-gray-700">
+          <span className="text-sm sm:text-base lg:text-lg font-semibold text-gray-700">
             Progreso: {orders.length} de {people.length} personas
           </span>
-          <div className="flex space-x-2">
+          <div className="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
             <div className="flex items-center space-x-1">
-              <CheckCircle size={20} className="text-green-500" />
-              <span className="text-sm">Con pedido</span>
+              <CheckCircle size={16} className="sm:w-5 sm:h-5 text-green-500" />
+              <span className="text-xs sm:text-sm">Con pedido</span>
             </div>
             <div className="flex items-center space-x-1">
-              <XCircle size={20} className="text-red-500" />
-              <span className="text-sm">Sin almuerzo</span>
+              <XCircle size={16} className="sm:w-5 sm:h-5 text-red-500" />
+              <span className="text-xs sm:text-sm">Sin almuerzo</span>
             </div>
           </div>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-3 mt-2">
+        <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3 mt-2">
           <div
-            className="bg-gradient-to-r from-[#41BAAE] to-[#BADA55] h-3 rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-[#41BAAE] to-[#BADA55] h-2 sm:h-3 rounded-full transition-all duration-300"
             style={{ width: `${people.length > 0 ? (orders.length / people.length) * 100 : 0}%` }}
           ></div>
         </div>
@@ -154,48 +154,48 @@ const MakeOrder: React.FC = () => {
 
       {/* Students Section */}
       {students.length > 0 && (
-        <div className="mb-12">
-          <div className="flex items-center mb-6">
-            <User size={32} className="mr-3 text-[#41BAAE]" />
-            <h2 className="text-3xl font-bold text-gray-800">Estudiantes</h2>
+        <div className="mb-8 sm:mb-10 lg:mb-12">
+          <div className="flex items-center mb-4 sm:mb-6">
+            <User size={24} className="mr-2 sm:mr-3 text-[#41BAAE] sm:w-8 sm:h-8" />
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">Estudiantes</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {students.map((person) => {
               const status = getOrderStatus(person.id);
               return (
                 <Link
                   key={person.id}
                   to={`/order-options/${person.id}`}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-[#41BAAE] relative"
+                  className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-[#41BAAE] relative"
                 >
                   {status === 'ordered' && (
                     <CheckCircle 
-                      size={32} 
-                      className="absolute top-4 right-4 text-green-500 bg-white rounded-full" 
+                      size={24} 
+                      className="absolute top-2 right-2 sm:top-4 sm:right-4 text-green-500 bg-white rounded-full sm:w-8 sm:h-8" 
                     />
                   )}
                   {status === 'no-meal' && (
                     <XCircle 
-                      size={32} 
-                      className="absolute top-4 right-4 text-red-500 bg-white rounded-full" 
+                      size={24} 
+                      className="absolute top-2 right-2 sm:top-4 sm:right-4 text-red-500 bg-white rounded-full sm:w-8 sm:h-8" 
                     />
                   )}
                   <div className="text-center">
                     <img
                       src={person.photo}
                       alt={person.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-[#BADA55]"
+                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-[#BADA55]"
                     />
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{person.name}</h3>
-                    <div className="text-sm text-gray-500 mb-3">Estudiante</div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 sm:mb-2">{person.name}</h3>
+                    <div className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Estudiante</div>
                     {status === 'ordered' && (
-                      <div className="text-green-600 font-semibold">✓ Pedido realizado</div>
+                      <div className="text-green-600 font-semibold text-xs sm:text-sm">✓ Pedido realizado</div>
                     )}
                     {status === 'no-meal' && (
-                      <div className="text-red-600 font-semibold">✗ Sin almuerzo</div>
+                      <div className="text-red-600 font-semibold text-xs sm:text-sm">✗ Sin almuerzo</div>
                     )}
                     {status === 'pending' && (
-                      <div className="text-gray-500">Pendiente</div>
+                      <div className="text-gray-500 text-xs sm:text-sm">Pendiente</div>
                     )}
                   </div>
                 </Link>
@@ -207,48 +207,48 @@ const MakeOrder: React.FC = () => {
 
       {/* Teachers Section */}
       {teachers.length > 0 && (
-        <div className="mb-12">
-          <div className="flex items-center mb-6">
-            <GraduationCap size={32} className="mr-3 text-[#BADA55]" />
-            <h2 className="text-3xl font-bold text-gray-800">Profesores</h2>
+        <div className="mb-8 sm:mb-10 lg:mb-12">
+          <div className="flex items-center mb-4 sm:mb-6">
+            <GraduationCap size={24} className="mr-2 sm:mr-3 text-[#BADA55] sm:w-8 sm:h-8" />
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">Profesores</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {teachers.map((person) => {
               const status = getOrderStatus(person.id);
               return (
                 <Link
                   key={person.id}
                   to={`/order-options/${person.id}`}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-[#BADA55] relative"
+                  className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-[#BADA55] relative"
                 >
                   {status === 'ordered' && (
                     <CheckCircle 
-                      size={32} 
-                      className="absolute top-4 right-4 text-green-500 bg-white rounded-full" 
+                      size={24} 
+                      className="absolute top-2 right-2 sm:top-4 sm:right-4 text-green-500 bg-white rounded-full sm:w-8 sm:h-8" 
                     />
                   )}
                   {status === 'no-meal' && (
                     <XCircle 
-                      size={32} 
-                      className="absolute top-4 right-4 text-red-500 bg-white rounded-full" 
+                      size={24} 
+                      className="absolute top-2 right-2 sm:top-4 sm:right-4 text-red-500 bg-white rounded-full sm:w-8 sm:h-8" 
                     />
                   )}
                   <div className="text-center">
                     <img
                       src={person.photo}
                       alt={person.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-[#41BAAE]"
+                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-[#41BAAE]"
                     />
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{person.name}</h3>
-                    <div className="text-sm text-gray-500 mb-3">Profesor</div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 sm:mb-2">{person.name}</h3>
+                    <div className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Profesor</div>
                     {status === 'ordered' && (
-                      <div className="text-green-600 font-semibold">✓ Pedido realizado</div>
+                      <div className="text-green-600 font-semibold text-xs sm:text-sm">✓ Pedido realizado</div>
                     )}
                     {status === 'no-meal' && (
-                      <div className="text-red-600 font-semibold">✗ Sin almuerzo</div>
+                      <div className="text-red-600 font-semibold text-xs sm:text-sm">✗ Sin almuerzo</div>
                     )}
                     {status === 'pending' && (
-                      <div className="text-gray-500">Pendiente</div>
+                      <div className="text-gray-500 text-xs sm:text-sm">Pendiente</div>
                     )}
                   </div>
                 </Link>
@@ -263,10 +263,10 @@ const MakeOrder: React.FC = () => {
         <div className="text-center">
           <button
             onClick={handleContinueToSummary}
-            className="bg-gradient-to-r from-[#41BAAE] to-[#BADA55] text-white px-12 py-6 rounded-2xl text-2xl font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-4 mx-auto"
+            className="bg-gradient-to-r from-[#41BAAE] to-[#BADA55] text-white px-6 sm:px-8 lg:px-12 py-4 sm:py-6 rounded-xl sm:rounded-2xl text-lg sm:text-xl lg:text-2xl font-bold shadow-xl sm:shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 sm:space-x-4 mx-auto"
           >
             <span>Ver Resumen del Pedido</span>
-            <ArrowRight size={32} />
+            <ArrowRight size={20} className="sm:w-6 sm:h-6 lg:w-8 lg:h-8" />
           </button>
         </div>
       )}
